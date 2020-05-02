@@ -27,7 +27,6 @@ public class Address implements Serializable{
 
 	@Id
     @GeneratedValue()
-
 	private Long id;
 	
     

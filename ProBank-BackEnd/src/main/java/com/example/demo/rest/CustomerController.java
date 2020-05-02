@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,7 @@ import com.example.demo.model.Account;
 import com.example.demo.model.Address;
 import com.example.demo.model.Customer;
 
-
+@CrossOrigin
 @RestController
 
 public class CustomerController {
@@ -58,21 +59,17 @@ public class CustomerController {
     }
     
     @PutMapping("/customers/{id}")
-    public Customer updatec(@PathVariable Long id,
-                                   @Valid @RequestBody Customer customerUpdated) {
-        return customerRepository.findById(id)
-                .map(customer -> {
+    public Customer updatec(@PathVariable Long id, @Valid @RequestBody Customer customerUpdated) 
+    {
+        return customerRepository.findById(id).map(customer -> {
                     customer.setName(customerUpdated.getName());
-                   
-                    
                     customer.setAadhar(customerUpdated.getAadhar());
                     customer.setGender(customerUpdated.getGender());
                     customer.setPanCard(customerUpdated.getPanCard());
                     customer.setContactNumber(customerUpdated.getContactNumber());
                     customer.setDob(customerUpdated.getDob());
-                   
                     return customerRepository.save(customer);
-                }).orElseThrow(() -> new NotFoundException("customer not found with id " + id));
+                	}).orElseThrow(() -> new NotFoundException("customer not found with id " + id));
     }
     
     @DeleteMapping("/customers/{id}")
@@ -180,16 +177,14 @@ public class CustomerController {
   }
   
   @PutMapping("/addresses/{addressesId}")
-  public Address updateaddress(@PathVariable Long addressesId,
-                             @Valid @RequestBody Address addressUpdated) {
-      return addressRepository.findById(addressesId)
-              .map(address -> {
+  public Address updateaddress(@PathVariable Long addressesId, @Valid @RequestBody Address addressUpdated) 
+  {
+      return addressRepository.findById(addressesId).map(address -> {
                   address.setCity(addressUpdated.getCity());
                   address.setAddressLine1(addressUpdated.getAddressLine1());
                   address.setAddressLine2(addressUpdated.getAddressLine2());
                   address.setCountry(addressUpdated.getCountry());
                   address.setZipCode(addressUpdated.getZipCode());
-                 
                   return addressRepository.save(address);
               }).orElseThrow(() -> new NotFoundException("address not found with this id:!  "+addressesId));
   }

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>ProBank-BackEnd</artifactId>
+	<artifactId>proBankSivaPart-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProBank-BackEnd</name>
-	<description>ProBank-BackEnd</description>
+	<name>proBankSivaPart-1</name>
+	<description>proBankSivaPart</description>
 
 	<properties>
 		<java.version>1.8</java.version>

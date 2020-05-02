@@ -28,45 +28,35 @@ public class Customer implements Serializable {
 	@Id
     @GeneratedValue()
 	private Long id;
-	
 
 	@Size(min=12, max=12)
-	 @Pattern(regexp="[0-9]+")
+	@Pattern(regexp="[0-9]+")
 	@NotNull(message="Aadhar should be mandatery and size should be 12 numbers")
 	@Column(name = "aadhar")
-	
     private String aadhar; 
 	
 	@NotNull
     @Pattern(regexp="[A-Za-z]+")
 	@NotNull(message=" Gender Should be  Mandatory")
     @Column(name = "gender")
-		private String gender;
+	private String gender;
 	
 	@NotNull
 	@Size(min = 9, max = 9)
-	 @Pattern(regexp="[A-Z]{4}[0-9]{4}[A-Z]")
+	@Pattern(regexp="[A-Z]{4}[0-9]{4}[A-Z]")
     @Column(name = "panCard")	
 	@NotNull(message="PanCard should be mandatery that too First 4 caps then 4 numbers then 1 caps")
 	private String panCard;
-	
-	
-	
-	
 	
 	@Pattern(regexp="[0-9]{10}")
     @Column(name = "contactNumber")
 	@NotNull(message="contactNumber  is Mandatory that too 10 numbers")
 	private String contactNumber;
 	
-	
 	@Pattern(regexp="[0-9]{2}\\-[0-9]{2}\\-[0-9]{4}")
 	@NotNull(message="DateOfBirth Mandatery")
     @Column(name = "dob")
 	private String dob;
-
-	
-	
 	
     @Size(min = 3, max = 50)
 	@Pattern(regexp="[A-Za-z]+")
@@ -74,14 +64,10 @@ public class Customer implements Serializable {
     @NotNull(message=" Name is Mandatory")
 	private String name;
       
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "customer")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "customer")
     private Address address;
     
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "customer")
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "customer")
     private Account account;
 	
 	public Customer() {}

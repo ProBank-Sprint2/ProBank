@@ -52,21 +52,18 @@ public class Account implements Serializable{
     
 	 
 	@Column(name = "balance")
-	
 	private Double balance;  
 	 
-	 
-	 
-	 @Size(min = 9, max = 9)
-	 @Pattern(regexp="[A-Z]{3}[0-9]{6}")
-	 @Column(name = "branchId")
-	 @NotNull(message="BranchId is Mandatory")
+	@Size(min = 9, max = 9)
+	@Pattern(regexp="[A-Z]{3}[0-9]{6}")
+	@Column(name = "branchId")
+	@NotNull(message="BranchId is Mandatory")
 	private String branchId;
 	 
-	 @OneToOne(fetch = FetchType.LAZY, optional = false)
-	 @JoinColumn(name = "account_id", nullable = false)
-	 @JsonBackReference
-	 private Customer customer;
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "account_id", nullable = false)
+	@JsonBackReference
+	private Customer customer;
 
 	public Long getId() {
 		return id;
