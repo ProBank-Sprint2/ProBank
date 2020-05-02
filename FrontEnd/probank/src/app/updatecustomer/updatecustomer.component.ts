@@ -46,8 +46,11 @@ export class UpdatecustomerComponent implements OnInit {
   {
     this.flag3 = true;
   }
-  func()
+  submitFunc()
   {
+    console.log(this.tempCust);
+    console.log(this.tempCust.name);
+    console.log(this.tempCust.id);
     this.service.updatec(this.id,this.tempCust).subscribe(data=>
       {
         alert("Updated Successfully");

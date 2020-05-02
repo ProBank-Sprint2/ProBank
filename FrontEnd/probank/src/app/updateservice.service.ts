@@ -24,11 +24,12 @@ export class UpdateserviceService
   updatec(id:number, customerUpdated:Customer):Observable<any>
   {
     let url = "http://localhost:3333/customers/"+id;
-    return this._http.post(url, customerUpdated, {responseType:'text'});
+    return this._http.put(url, customerUpdated, {responseType:'text'});
   }
   updateaddress(addressesId:number, addressUpdated:Address):Observable<any>
   {
     let url = "http://localhost:3333/customers/"+addressesId;
-    return this._http.post(url, addressUpdated, {responseType:'text'});
+    return this._http.put(url, addressUpdated, {responseType:'text'});
   }
+
 }
