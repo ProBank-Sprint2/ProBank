@@ -31,7 +31,7 @@ public class Address implements Serializable{
 	
     
     @Size(min = 3, max = 20)
-	@Pattern(regexp="[A-Za-z]+")
+	@Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "city")
     @NotNull(message="city is Mandatory")
     private String city;
@@ -39,14 +39,14 @@ public class Address implements Serializable{
    
    
     @Size(min = 3, max = 60)
-	@Pattern(regexp="[A-Za-z]+")
+	@Pattern(regexp="[A-Za-z0-9\\s]+")
     @Column(name = "addressLine1")
     @NotNull(message="Address is  is Mandatory")
     private String addressLine1;
 	
     
     @Size(min = 3, max = 60)
-    @Pattern(regexp="[A-Za-z]+")
+    @Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "addressLine2")
     @NotNull(message="Address 2  is Mandatory")
 	private String addressLine2;
@@ -54,7 +54,7 @@ public class Address implements Serializable{
    
     @Size(min = 3, max = 20)
     @NotNull(message="country is Mandatory")
-    @Pattern(regexp="[A-Za-z]+")
+    @Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "country")
 	private String country;
     

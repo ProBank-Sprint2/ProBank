@@ -37,7 +37,7 @@ public class Customer implements Serializable {
 	
 	@NotNull
     @Pattern(regexp="[A-Za-z]+")
-	@NotNull(message=" Gender Should be  Mandatory")
+	@NotNull(message=" Gender Should be Mandatory")
     @Column(name = "gender")
 	private String gender;
 	
@@ -59,7 +59,7 @@ public class Customer implements Serializable {
 	private String dob;
 	
     @Size(min = 3, max = 50)
-	@Pattern(regexp="[A-Za-z]+")
+	@Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "name")
     @NotNull(message=" Name is Mandatory")
 	private String name;
