@@ -21,6 +21,11 @@ export class UpdateserviceService
     let url = "http://localhost:3333/customers/"+id;
     return this._http.get(url);
   }
+  getaddressBycustomerId(customerId:number):Observable<any>
+  {
+    let url = "http://localhost:3333/customers/"+customerId+"/addresses";
+    return this._http.get(url);
+  }
   updatec(id:number, customerUpdated:Customer):Observable<any>
   {
     let url = "http://localhost:3333/customers/"+id;
@@ -31,5 +36,4 @@ export class UpdateserviceService
     let url = "http://localhost:3333/customers/"+addressesId;
     return this._http.put(url, addressUpdated, {responseType:'text'});
   }
-
 }
