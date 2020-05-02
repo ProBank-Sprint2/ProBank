@@ -1,0 +1,63 @@
+<table class="table table-sm table-bordered table-hover" style="background-color: aliceblue;">
+    <thead class="thead-dark">
+        <tr>
+            <th><a class="btn btn-info" scope="col">Customer ID</a></th>
+            <th><a class="btn btn-info" scope="col">Customer NAME</a></th>
+            <th><a class="btn btn-info" scope="col">AADHAR</a></th>
+            <th><a class="btn btn-info" scope="col">CONTACT NUMBER</a></th>
+            <th><a class="btn btn-info" scope="col">DOB</a></th> 
+            <th><a class="btn btn-info" scope="col">GENDER</a></th> 
+            <th><a class="btn btn-info" scope="col">PAN_CARD</a></th>
+            <th><a class="btn btn-danger" scope="col"> Modifications </a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of cust">  <!--  ; let i=index  --> 
+            <th scope="row">&nbsp;&nbsp;&nbsp;{{p.id}}</th>
+            <td>&nbsp;&nbsp;&nbsp;{{p.name}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.aadhar}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.contactNumber}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.dob}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.gender}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.panCard}}</td>
+            <td><a (click)="update(p.id)" class="btn btn-outline-danger mx-auto" style="width: 121.97px;">Update</a></td>
+        </tr>
+    </tbody>
+</table><hr><hr>
+<form *ngIf=!flag3 #formdata="ngForm" (ngSubmit)="func()" >
+    <table class="table table-sm table-bordered " style="width: 80%; margin-left: 8%;">
+        <tr>
+            <th colspan="2" style="text-align: center;">
+                <h2>Update Form</h2>
+            </th>
+        </tr>
+        <tr>
+            <td><div class="form-group">Name:</div></td>
+            <td><div><input class="form-control" type="text" name="name" [(ngModel)]="tempCust.name" #usr="ngModel" required></div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group">Aadhar:</div></td>
+            <td><div><input class="form-control" type="number" name="aadhar" [(ngModel)]="tempCust.aadhar" required></div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group"> Contact Number: </div></td>
+            <td><div><input class="form-control" type="text" name="contactNumber" [(ngModel)]="tempCust.contactNumber" #usr="ngModel" required> </div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group">DOB:</div></td>
+            <td><div><input class="form-control" type="text" name="dob" [(ngModel)]="tempCust.dob" #usr="ngModel" required></div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group">Gender:</div></td>
+            <td><div><input class="form-control" type="text" name="gender" [(ngModel)]="tempCust.gender" #usr="ngModel" required></div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group">Pan Card:</div></td>
+            <td><div><input class="form-control" type="text" name="panCard" [(ngModel)]="tempCust.panCard" #usr="ngModel" required></div></td>
+        </tr>
+        <tr>
+            <td><div class="form-group"></div></td>
+            <td><div class="form-group"><input class="btn btn-dark" style="width: 200px;" type="submit"  value="Enter"><a *ngIf=!flag3 style="width: 200px; margin-left: 5%;" (click)="cancel()" class="btn btn-outline-danger">Cancel</a></div></td>
+        </tr>
+    </table>
+</form>
