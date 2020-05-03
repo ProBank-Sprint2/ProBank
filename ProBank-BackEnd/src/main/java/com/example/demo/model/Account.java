@@ -1,3 +1,12 @@
+/*
+ * 
+ * to make table and set parameters/validations for that table in the database
+ * object of this class(entity) is used to persist in the account class in Oracle database
+ * data fetched from database is also stored/updated in lists of these entity classes
+ * 
+ */
+
+
 package com.example.demo.model;
 
 

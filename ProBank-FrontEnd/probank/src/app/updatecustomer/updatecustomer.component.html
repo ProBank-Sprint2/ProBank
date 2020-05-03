@@ -1,0 +1,110 @@
+<table class="table table-sm table-bordered table-hover table-responsive zoom1 shadow-lg p-3 mb-5 bg-white rounded mx-auto" style="background-color: aliceblue;">
+    <thead class="thead-dark">
+        <tr>
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">Customer ID</a></th>
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">Customer Name</a></th>
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">AADHAR</a></th>
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">CONTACT NUMBER</a></th>
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">DOB</a></th> 
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">GENDER</a></th> 
+            <th><a class="btn btn-info flip" scope="col" style="width: 100%;">PAN_CARD</a></th>
+            <th><a class="btn btn-danger flip" scope="col" style="width: 100%;"> Modifications </a></th>
+            <th><a class="btn btn-warning flip" scope="col" style="width: 121.97px;">View</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of cust">
+            <th scope="row">&nbsp;&nbsp;&nbsp;{{p.id}}</th>
+            <td>&nbsp;&nbsp;&nbsp;{{p.name}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.aadhar}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.contactNumber}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.dob}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.gender}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.panCard}}</td>
+            <td><a (click)="updateCustomer(p.id)" (dblclick)="cancelUpdate()" class="zoom flip btn btn-outline-danger mx-auto" style="width: 121.97px;">Update</a></td>
+            <td><a (click)="fetchAddress(p.id)" (dblclick)="cancelUpdatingAddress()" class="zoom flip btn btn-outline-warning mx-auto">Address</a></td>
+        </tr>
+    </tbody>
+</table><hr><hr>
+<form autocomplete="off" *ngIf=!flag5 #formdata="ngForm" (ngSubmit)="submitFunc2()">
+    <table class="table table-sm table-bordered table-hover shadow-lg p-3 mb-5 bg-white rounded zoom3 mx-auto" style="width: 80%;">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="2" style="text-align: center;">
+                    <h2><label>{{tempCust.name}}'s Address Details:</label></h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div class="form-group">Customer's Name:</div></td>
+                <td><div><input class="form-control" type="text" name="name" [(ngModel)]="tempCust.name" #usr="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Address Line 1:</div></td>
+                <td><div><input class="form-control" type="text" name="addressLine1" [(ngModel)]="tempAddress.addressLine1" #usr2="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Address Line 2:</div></td>
+                <td><div><input class="form-control" type="text" name="addressLine2" [(ngModel)]="tempAddress.addressLine2" #usr2="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">City:</div></td>
+                <td><div><input class="form-control" type="text" name="city" [(ngModel)]="tempAddress.city" #usr2="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Country:</div></td>
+                <td><div><input class="form-control" type="text" name="country" [(ngModel)]="tempAddress.country" #usr2="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Zip Code:</div></td>
+                <td><div><input class="form-control" type="text" name="zipCode" [(ngModel)]="tempAddress.zipCode" #usr2="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group"></div></td>
+                <td><div class="form-group"><input class="btn btn-dark" style="width: 200px;" type="submit" value="Enter"><a style="width: 200px; margin-left: 5%;" (click)="cancelUpdatingAddress()" class="btn btn-outline-danger">Cancel</a></div></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<form *ngIf=!flag3 #formdata="ngForm" (ngSubmit)="submitFunc()" >
+    <table class="table table-sm table-bordered table-hover shadow-lg p-3 mb-5 bg-white rounded zoom3 mx-auto" style="width: 80%;">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="2" style="text-align: center;">
+                    <h2><label>Update Form</label></h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div class="form-group">Name:</div></td>
+                <td><div><input class="form-control" type="text" name="name" [(ngModel)]="tempCust.name" #usr="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Aadhar:</div></td>
+                <td><div><input class="form-control" type="number" name="aadhar" [(ngModel)]="tempCust.aadhar" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group"> Contact Number: </div></td>
+                <td><div><input class="form-control" type="text" name="contactNumber" [(ngModel)]="tempCust.contactNumber" #usr="ngModel" required> </div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">DOB:</div></td>
+                <td><div><input class="form-control" type="text" name="dob" [(ngModel)]="tempCust.dob" #usr="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Gender:</div></td>
+                <td><div><input class="form-control" type="text" name="gender" [(ngModel)]="tempCust.gender" #usr="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Pan Card:</div></td>
+                <td><div><input class="form-control" type="text" name="panCard" [(ngModel)]="tempCust.panCard" #usr="ngModel" required></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group"></div></td>
+                <td><div class="form-group"><input class="btn btn-dark" style="width: 200px;" type="submit" value="Enter"><a style="width: 200px; margin-left: 5%;" (click)="cancelUpdate()" class="btn btn-outline-danger">Cancel</a></div></td>
+            </tr>
+        </tbody>
+    </table>
+</form>

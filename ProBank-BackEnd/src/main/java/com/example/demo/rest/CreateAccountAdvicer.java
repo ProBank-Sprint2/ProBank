@@ -1,3 +1,12 @@
+/*
+ * 
+ * if error occurred while account creation then 
+ * this class is used to throw error message to the exception package
+ * 
+ */
+
+
+
 package com.example.demo.rest;
 
 import org.springframework.http.HttpStatus;

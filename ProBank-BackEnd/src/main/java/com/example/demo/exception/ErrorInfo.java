@@ -1,3 +1,10 @@
+/*
+ * 
+ * just a supporting class for error handling 
+ * 
+ */
+
+
 package com.example.demo.exception;
 
 public class ErrorInfo {
