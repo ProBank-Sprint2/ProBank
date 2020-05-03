@@ -11,7 +11,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -137,9 +137,6 @@ public class Customer implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
-
 	
 	public Address getAddress() {
 		return address;

@@ -42,3 +42,11 @@
 {
     transform: rotateY(360deg);
 }
+.flip1
+{
+    transition: transform 25s;
+}
+.flip1:hover
+{
+    transform: rotateY(9000deg);
+}
