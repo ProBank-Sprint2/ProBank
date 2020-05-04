@@ -1,3 +1,9 @@
+/*
+ * 
+ * Spring Boot starter project
+ * this is also used in the early phase 
+ * 
+ */
 package com.example.demo;
 
 import org.springframework.boot.SpringApplication;

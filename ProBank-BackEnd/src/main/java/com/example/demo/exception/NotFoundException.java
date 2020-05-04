@@ -1,3 +1,15 @@
+/*
+ * 
+ * 
+ * if the id is not found then the 
+ * exception is thrown and handled here
+ * and the respective message is send
+ * 
+ */
+
+
+
+
 package com.example.demo.exception;
 
 import org.springframework.http.HttpStatus;

@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UpdateserviceService } from '../updateservice.service';
 import { Customer } from '../customer';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Address } from '../address';
 
 @Component({
   selector: 'app-updatecustomer',
@@ -10,13 +12,15 @@ import { NgForm } from '@angular/forms';
 })
 export class UpdatecustomerComponent implements OnInit {
 
-  constructor(private service:UpdateserviceService) { }
+  constructor(private service:UpdateserviceService, private route:Router ) { }
 
   flag3:boolean = true;
+  flag4:boolean = true;
   @ViewChild("formdata")
   form: NgForm;
   cust:Customer[];
   tempCust:Customer;
+  tempAddress:Address;
   id:number;
   ngOnInit(): void 
   {
@@ -46,6 +50,31 @@ export class UpdatecustomerComponent implements OnInit {
   {
     this.flag3 = true;
   }
+  hideAddress()
+  {
+    this.flag4 = true;
+  }
+  showAddress(id:number)
+  {
+    this.flag4 = false;
+    this.id = id;
+    this.service.getUgetcustomerByIDser(this.id).subscribe(data=>
+      {
+        this.tempCust = data;
+      },
+      error=>{
+        alert("error occured while fetching data from server for a perticular ID");
+        console.log("error occured while fetching data from server for a perticular ID");
+      });
+    this.service.getaddressBycustomerId(this.id).subscribe(data=>
+      {
+        this.tempAddress = data;
+      },
+      error=>{
+        alert("error occured while fetching data from server for a perticular ID");
+        console.log("error occured while fetching data from server for a perticular ID");
+      });
+  }
   submitFunc()
   {
     console.log(this.tempCust);
@@ -58,6 +87,19 @@ export class UpdatecustomerComponent implements OnInit {
       error=>{
         alert("error occured while sending data to the server for a perticular ID");
         console.log("error occured while sending data to the server for a perticular ID");
+      });
+      this.route.navigate(["/"]);
+      this.loadData();
+  }
+  loadData()
+  {
+    this.service.getAllcustomers().subscribe(data=>
+      {
+        this.cust = data;
+      },
+      error=>{
+        alert("error occured while subscribing data from server");
+        console.log("error occured while subscribing data from server");
       });
   }
 }

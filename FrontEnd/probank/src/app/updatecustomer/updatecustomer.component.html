@@ -1,5 +1,75 @@
-<table class="table table-sm table-bordered table-hover" style="background-color: aliceblue;">
+<table class="table table-sm table-bordered table-hover table-responsive zoom1 shadow-lg p-3 mb-5 bg-white rounded mx-auto" style="background-color: aliceblue;">
     <thead class="thead-dark">
+        <tr (mouseover)="hideAddress()">
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">Customer ID</a></th>
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">Customer NAME</a></th>
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">AADHAR</a></th>
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">CONTACT NUMBER</a></th>
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">DOB</a></th> 
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">GENDER</a></th> 
+            <th><a class="btn btn-info" scope="col" style="width: 100%;">PAN_CARD</a></th>
+            <th><a class="btn btn-danger" scope="col" style="width: 100%;"> Modifications </a></th>
+            <th><a class="btn btn-info" scope="col" style="width: 121.97px;">View</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of cust">
+            <th scope="row">&nbsp;&nbsp;&nbsp;{{p.id}}</th>
+            <td>&nbsp;&nbsp;&nbsp;{{p.name}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.aadhar}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.contactNumber}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.dob}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.gender}}</td>
+            <td>&nbsp;&nbsp;&nbsp;{{p.panCard}}</td>
+            <td><a (click)="update(p.id)" (dblclick)="cancel()" class="btn btn-outline-danger mx-auto" style="width: 121.97px;">Update</a></td>
+            <td><a (mouseenter)="showAddress(p.id)" (mouseleave)="hideAddress()" class="zoom btn btn-outline-danger mx-auto">Address</a></td>
+        </tr>
+    </tbody>
+</table><hr (mouseover)="hideAddress()"><hr (mouseover)="hideAddress()">
+<form *ngIf=!flag4 #formdata="ngForm">
+    <table class="table table-sm table-bordered table-hover shadow-lg p-3 mb-5 bg-white rounded" style="width: 80%; margin-left: 8%;">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="2" style="text-align: center;">
+                    <h2><label>{{tempCust.name}}'s Address Details:</label></h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div class="form-group">Customer's Name:</div></td>
+                <td><div><label class="form-control">{{tempCust.name}}</label></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Address Line 1:</div></td>
+                <td><div><label class="form-control">{{tempAddress.addressLine1}}</label></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Address Line 2:</div></td>
+                <td><div><label class="form-control">{{tempAddress.addressLine2}}</label></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">City:</div></td>
+                <td><div><label class="form-control">{{tempAddress.city}}</label></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Country:</div></td>
+                <td><div><label class="form-control">{{tempAddress.country}}</label></div></td>
+            </tr>
+            <tr>
+                <td><div class="form-group">Zip Code:</div></td>
+                <td><div><label class="form-control">{{tempAddress.zipCode}}</label></div></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<!-- <table class="table table-sm table-bordered table-hover" style="background-color: aliceblue;">
+    <thead class="thead-dark">
+        <tr>
+            <th colspan="2" style="text-align: center;">
+                <h2>What do you want to update ?</h2>
+            </th>
+        </tr>
         <tr>
             <th><a class="btn btn-info" scope="col">Customer ID</a></th>
             <th><a class="btn btn-info" scope="col">Customer NAME</a></th>
@@ -8,11 +78,11 @@
             <th><a class="btn btn-info" scope="col">DOB</a></th> 
             <th><a class="btn btn-info" scope="col">GENDER</a></th> 
             <th><a class="btn btn-info" scope="col">PAN_CARD</a></th>
-            <th><a class="btn btn-danger" scope="col"> Modifications </a></th>
+            <th><a class="btn btn-info" scope="col"> Modifications </a></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of cust">  <!--  ; let i=index  --> 
+        <tr *ngFor="let p of cust"> 
             <th scope="row">&nbsp;&nbsp;&nbsp;{{p.id}}</th>
             <td>&nbsp;&nbsp;&nbsp;{{p.name}}</td>
             <td>&nbsp;&nbsp;&nbsp;{{p.aadhar}}</td>
@@ -23,12 +93,12 @@
             <td><a (click)="update(p.id)" class="btn btn-outline-danger mx-auto" style="width: 121.97px;">Update</a></td>
         </tr>
     </tbody>
-</table><hr><hr>
+</table><hr><hr> -->
 <form *ngIf=!flag3 #formdata="ngForm" (ngSubmit)="submitFunc()" >
-    <table class="table table-sm table-bordered " style="width: 80%; margin-left: 8%;">
+    <table class="table table-sm table-bordered shadow-lg p-3 mb-5 bg-white rounded zoom3 mx-auto" style="width: 80%;">
         <tr>
             <th colspan="2" style="text-align: center;">
-                <h2>Update Form</h2>
+                <h2><label>Update Form</label></h2>
             </th>
         </tr>
         <tr>
@@ -57,7 +127,7 @@
         </tr>
         <tr>
             <td><div class="form-group"></div></td>
-            <td><div class="form-group"><input class="btn btn-dark" style="width: 200px;" type="submit"  value="Enter"><a *ngIf=!flag3 style="width: 200px; margin-left: 5%;" (click)="cancel()" class="btn btn-outline-danger">Cancel</a></div></td>
+            <td><div class="form-group"><input class="btn btn-dark" style="width: 200px;" type="submit" value="Enter"><a *ngIf=!flag3 style="width: 200px; margin-left: 5%;" (click)="cancel()" class="btn btn-outline-danger">Cancel</a></div></td>
         </tr>
     </table>
 </form>

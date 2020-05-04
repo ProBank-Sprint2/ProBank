@@ -1,7 +1,17 @@
+/*
+ * 
+ * to make table and set parameters/validations for that table in the database
+ * object of this class(entity) is used to persist in the customer class in Oracle database
+ * data fetched from database is also stored/updated in lists of these entity classes
+ * 
+ */
+
+
+
 package com.example.demo.model;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +47,7 @@ public class Customer implements Serializable {
 	
 	@NotNull
     @Pattern(regexp="[A-Za-z]+")
-	@NotNull(message=" Gender Should be  Mandatory")
+	@NotNull(message=" Gender Should be Mandatory")
     @Column(name = "gender")
 	private String gender;
 	
@@ -59,7 +69,7 @@ public class Customer implements Serializable {
 	private String dob;
 	
     @Size(min = 3, max = 50)
-	@Pattern(regexp="[A-Za-z]+")
+	@Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "name")
     @NotNull(message=" Name is Mandatory")
 	private String name;
@@ -127,9 +137,6 @@ public class Customer implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
-
 	
 	public Address getAddress() {
 		return address;

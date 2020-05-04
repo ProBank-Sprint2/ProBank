@@ -1,3 +1,14 @@
+/*
+ * 
+ * to make table and set parameters/validations for that table in the database
+ * object of this class(entity) is used to persist in the address class in Oracle database
+ * data fetched from database is also stored/updated in lists of these entity classes
+ * 
+ */
+
+
+
+
 package com.example.demo.model;
 
 import java.io.Serializable;
@@ -30,8 +41,8 @@ public class Address implements Serializable{
 	private Long id;
 	
     
-    @Size(min = 3, max = 20)
-	@Pattern(regexp="[A-Za-z]+")
+    @Size(min = 1, max = 100)
+	@Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "city")
     @NotNull(message="city is Mandatory")
     private String city;
@@ -39,22 +50,22 @@ public class Address implements Serializable{
    
    
     @Size(min = 3, max = 60)
-	@Pattern(regexp="[A-Za-z]+")
+	@Pattern(regexp="[A-Za-z0-9\\s]+")
     @Column(name = "addressLine1")
     @NotNull(message="Address is  is Mandatory")
     private String addressLine1;
 	
     
     @Size(min = 3, max = 60)
-    @Pattern(regexp="[A-Za-z]+")
+    @Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "addressLine2")
     @NotNull(message="Address 2  is Mandatory")
 	private String addressLine2;
 	
    
-    @Size(min = 3, max = 20)
+    @Size(min = 4, max = 60)
     @NotNull(message="country is Mandatory")
-    @Pattern(regexp="[A-Za-z]+")
+    @Pattern(regexp="[A-Za-z\\s]+")
     @Column(name = "country")
 	private String country;
     

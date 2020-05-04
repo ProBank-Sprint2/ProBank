@@ -1,3 +1,12 @@
+/*
+ * 
+ * Exception handling for printing error message
+ * 
+ * 
+ */
+
+
+
 package com.example.demo.exception;
 
 public class BankException extends Throwable{
