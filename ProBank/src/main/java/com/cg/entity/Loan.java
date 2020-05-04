@@ -12,16 +12,16 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name="loanmanagement")
+@Table(name="loanmanager")
 @DynamicInsert
 @DynamicUpdate
 public class Loan {
 	
 	
 	@Id
-	@Column(name="accountId")
-	@NotNull(message="Account ID is Mandatory")
-	private int accountId;
+	@Column(name="loanId")
+	@NotNull(message="Loan ID is Mandatory")
+	private int loanId;
 
 		@Column(name="amount")
 		@NotNull(message="Amount is Mandatory")
@@ -46,86 +46,110 @@ public class Loan {
 		
 		@Column(name="loanDisbursementStatus")
 		@NotNull(message="Status is Mandatory")
-	    private String loanDisbumentStatus;
-		
-		public Loan() {
-			super();
-			// TODO Auto-generated constructor stub
+	    private String loanDisbursementStatus;
+
+
+		public int getLoanId() {
+			return loanId;
 		}
 
-		public int getAccountId() {
-			return accountId;
-		}
-
-		public void setAccountId(int accountId) {
-			this.accountId = accountId;
-		}
 
 		public double getAmount() {
 			return amount;
 		}
 
-		public void setAmount(double amount) {
-			this.amount = amount;
-		}
 
 		public int getTenure() {
 			return tenure;
 		}
 
-		public void setTenure(int tenure) {
-			this.tenure = tenure;
-		}
 
 		public int getCreditScore() {
 			return creditScore;
 		}
 
-		public void setCreditScore(int creditScore) {
-			this.creditScore = creditScore;
-		}
 
 		public double getRoi() {
 			return roi;
 		}
 
-		public void setRoi(double roi) {
-			this.roi = roi;
-		}
 
 		public String getLoanType() {
 			return loanType;
 		}
 
+
+		public String getLoanDisbursementStatus() {
+			return loanDisbursementStatus;
+		}
+
+
+		public void setLoanId(int loanId) {
+			this.loanId = loanId;
+		}
+
+
+		public void setAmount(double amount) {
+			this.amount = amount;
+		}
+
+
+		public void setTenure(int tenure) {
+			this.tenure = tenure;
+		}
+
+
+		public void setCreditScore(int creditScore) {
+			this.creditScore = creditScore;
+		}
+
+
+		public void setRoi(double roi) {
+			this.roi = roi;
+		}
+
+
 		public void setLoanType(String loanType) {
 			this.loanType = loanType;
 		}
 
-		public String getLoanDisbumentStatus() {
-			return loanDisbumentStatus;
+
+		public void setLoanDisbursementStatus(String loanDisbursementStatus) {
+			this.loanDisbursementStatus = loanDisbursementStatus;
 		}
 
-		public void setLoanDisbumentStatus(String loanDisbumentStatus) {
-			this.loanDisbumentStatus = loanDisbumentStatus;
+
+		@Override
+		public String toString() {
+			return "Loan [loanId=" + loanId + ", amount=" + amount + ", tenure=" + tenure + ", creditScore="
+					+ creditScore + ", roi=" + roi + ", loanType=" + loanType + ", loanDisbursementStatus="
+					+ loanDisbursementStatus + "]";
 		}
 
-		public Loan(@NotNull(message = "Account ID is Mandatory") int accountId,
+
+		public Loan(@NotNull(message = "Loan ID is Mandatory") int loanId,
 				@NotNull(message = "Amount is Mandatory") double amount,
 				@NotNull(message = "TenureTime is Mandatory") int tenure,
 				@NotNull(message = "Credit_score is Mandatory") int creditScore,
 				@NotNull(message = "RateOfInterest is Mandatory") double roi,
 				@NotNull(message = "Type is Mandatory") String loanType,
-				@NotNull(message = "Status is Mandatory") String loanDisbumentStatus) {
+				@NotNull(message = "Status is Mandatory") String loanDisbursementStatus) {
 			super();
-			this.accountId = accountId;
+			this.loanId = loanId;
 			this.amount = amount;
 			this.tenure = tenure;
 			this.creditScore = creditScore;
 			this.roi = roi;
 			this.loanType = loanType;
-			this.loanDisbumentStatus = loanDisbumentStatus;
+			this.loanDisbursementStatus = loanDisbursementStatus;
+		}
+
+
+		public Loan() {
+			super();
 		}
 		
 		
+			
 		
 }

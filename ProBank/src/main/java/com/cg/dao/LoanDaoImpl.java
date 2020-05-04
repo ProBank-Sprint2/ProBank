@@ -1,5 +1,6 @@
 package com.cg.dao;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,11 +24,13 @@ public class LoanDaoImpl {
 	//adding new loan
 	public String addLoan(Loan loan)
 	{
+		System.out.println(loan.toString());
 		em.persist(loan);
 		return "loan added successfully";
 	}
 	
 	//view all loans
+	@SuppressWarnings("unchecked")
 	public List<Loan> viewLoan()
 	{
 		Query query=em.createQuery("select loan from Loan loan");
@@ -35,17 +38,20 @@ public class LoanDaoImpl {
 	}
 
 	//view specific loan
-	public Loan viewLoan(int accountId)
+	public Loan viewLoan(int loanId)
 	{
-		List <Loan> list=viewLoan();
-		Loan loan=null;
-		Optional <Loan> optional=list.stream().
-				filter(loan1->loan1.getAccountId()==accountId).findFirst();
-		if(optional.isPresent()) {
-			loan=optional.get();
-		}
+		Query query=em.createQuery("select l from Loan l where l.loanId=:id");
+		query.setParameter("id", loanId);
+		@SuppressWarnings("unchecked")
+		List<Loan> list=query.getResultList();
+		Loan loan = null;
+        Optional<Loan> opt = list.stream()
+                                .filter( c -> c.getLoanId()==(loanId))
+                                .findFirst();
+        if(opt.isPresent()) {
+            loan= opt.get();
+        }
 		return loan;
-		
 	}
 	
 	//removing unwanted loan
@@ -53,6 +59,7 @@ public class LoanDaoImpl {
 		em.remove(viewLoan(accountId));
 		return "loan deleted successfully";
 	}
+	
 	
 	//modify loan details
 	public String modifyLoan(Loan loan) {
