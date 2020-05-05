@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DisbursementserviceService } from '../disbursementservice.service';
-import { LoanRequest } from '../loanrequest';
+import { Loan } from '../loan';
+
 
 @Component({
   selector: 'app-loanrequest',
@@ -8,9 +9,9 @@ import { LoanRequest } from '../loanrequest';
   styleUrls: ['./loanrequest.component.css']
 })
 export class LoanrequestComponent implements OnInit {
-  loanrequest: LoanRequest[]=[];
+
   message:any;
- data:LoanRequest;
+  loan:Loan=new Loan(0,0,0,0,0,'','');
   constructor(private service:DisbursementserviceService) { }
 
   
@@ -18,9 +19,10 @@ export class LoanrequestComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
   public registerNow(){
-    let resp=this.service.doRegistration(this.loanrequest);
+    let resp=this.service.doRegistration(this.loan);
     resp.subscribe((data)=>this.message=data);
-      }
+  }
 
 }

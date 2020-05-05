@@ -1,3 +1,4 @@
+import { Loan } from './loan';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,25 +8,29 @@ import { Observable } from 'rxjs';
 export class DisbursementserviceService {
   constructor(private http:HttpClient) { }
 
-  public doRegistration(loanrequest){
-    return this.http.post("http://localhost:1213/loan/add",loanrequest,{responseType:'text' as 'json'});
+  public doRegistration(loan:Loan):Observable<any>{
+
+    alert(loan.loanId)
+    return this.http.post("http://localhost:1199/loan/add",loan,{responseType:'text' as 'json'});
   }
 
-  getLoanRequests(){
-    return this.http.get("http://localhost:1213/loan");
+  getLoanRequests():Observable<any>{
+    return this.http.get("http://localhost:1199/loan");
   }
 
-  getLoanRequestsByLoanId(){
-    return this.http.get("http://localhost:1213/loan/loanId");
+  getLoanRequestsByLoanId(loanId:number):Observable<any>{
+    alert(loanId)
+    return this.http.get("http://localhost:1199/loan/"+loanId);
   }
   
-   public putLoanRequests() {
-    return this.http.put("http://localhost:1213/loan/modify");
+   public putLoanRequests(loanrequest):Observable<any> {
+    return this.http.put("http://localhost:1199/loan/modify",loanrequest,{responseType:'text' as 'json'});
     
   }
   
-  public deleteLoanRequests(loanId) {
-    return this.http.delete("http://localhost:1213/loan/loanId");
+  public deleteLoanRequests(loanId:number):Observable<any> {
+    alert(loanId)
+    return this.http.delete("http://localhost:1199/loan/delete/"+loanId);
   }
 
 

@@ -12,7 +12,7 @@ export class AppComponent {
   myresponse:any;
 
   //url to fetch data from spring
-APP_URL="http://localhost:1213";
+APP_URL="http://localhost:1313";
 
 
 }

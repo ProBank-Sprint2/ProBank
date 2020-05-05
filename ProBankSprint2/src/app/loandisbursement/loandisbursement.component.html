@@ -8,16 +8,16 @@
     <div class="row">
                <div id="custom-search-input">
                                 <div class="input-group col-md-12" style="text-align: center">
-                                    <input type="text" class="search-query form-control" placeholder="Search with Unique Id"  name="loanId" [(ngModel)]="data1.loanId"/>
+                                    <input type="text" class="search-query form-control" placeholder="Search with Unique Id"  name="loanId" [(ngModel)]="loanId"/>
                                     <span class="input-group-btn">
-                                        <button class="btn btn-danger" type="button" (click)="findLoanRequestByloanId()">
+                                        <button class="btn btn-danger" type="button" (click)="findLoanRequestByaccountId()">
                                             <span class=" glyphicon glyphicon-search"></span>
                                         </button>
                                     </span>
                                 </div>
                             </div>
     </div>
-    </div>
+    </div>()
 <div class="container">
 <div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
@@ -28,9 +28,9 @@
             <th>amount</th>
             <th>tenure</th>
             <th>CreditScore</th>
-            <th>roi<th>
+            <th>roi</th>
             <th>loanType</th>
-            <th>loanStatus</th>
+            <th>loanDisbursementStatus</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -42,8 +42,8 @@
             <td>{{loanrequest.creditScore}}</td>
             <td>{{loanrequest.roi}}</td>
             <td>{{loanrequest.loanType}}</td>
-            <td>{{loanrequest.loanStatus}}</td>
-            <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delteLoanRequest(loanrequest.id)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+            <td>{{loanrequest.loanDisbursementStatus}}</td>
+            <td class="text-align"><button class="btn btn-danger btn-xs" (click)="deleteLoanRequest(loanrequest)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
           </tr>
     </tbody>
     </table>
