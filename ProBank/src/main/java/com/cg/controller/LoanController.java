@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.dto.NewLoan;
 import com.cg.entity.Loan;
 import com.cg.exception.BankException;
 import com.cg.service.LoanServiceImpl;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class LoanController {
 	
 	@Autowired
@@ -34,25 +33,26 @@ public class LoanController {
 		}
 		
 		@GetMapping(value="/loan/{loanId}",produces= {"application/json"})
-		public Loan viewLoan(@PathVariable int loanId) throws BankException {
+		public List<Loan> viewLoan(@PathVariable int loanId) throws BankException {
+			
 			return loanService.viewLoan(loanId);
 		}
 		
 		@PostMapping(value="/loan/add",consumes = {"application/json"})
-		public String addLoan(@RequestBody NewLoan loan){
-			return loanService.addLoan(loan.getLoan());
+		public List<Loan> addLoan(@RequestBody Loan loan){
+			return loanService.addLoan(loan);
 		}
 
 		@DeleteMapping("/loan/delete/{loanId}")
-		public String deleteLoan(@PathVariable int loanId){
+		public List<Loan> deleteLoan(@PathVariable int loanId){
 			return loanService.deleteLoan(loanId);
 		}
 		
 		@PutMapping(value="/loan/modify",consumes= {"application/json"})
-		public String modifyLoan(@RequestBody NewLoan loan) throws BankException{
+		public List<Loan> modifyLoan(@RequestBody Loan loan) throws BankException{
 			
 			
-			return loanService.modifyLoan(loan.getLoan());
+			return loanService.modifyLoan(loan);
 		}
 
 }

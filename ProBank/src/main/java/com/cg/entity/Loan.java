@@ -12,7 +12,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name="loanmanager")
+@Table(name="loandata")
 @DynamicInsert
 @DynamicUpdate
 public class Loan {
@@ -150,6 +150,11 @@ public class Loan {
 		}
 		
 		
-			
+		
+		
+		
+
+		
+		
 		
 }

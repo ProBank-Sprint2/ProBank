@@ -20,32 +20,32 @@ private LoanDaoImpl loanDao;
 
 
 
-			public Loan viewLoan(int loanId) throws BankException {
-				Loan loan1=loanDao.viewLoan(loanId);
+			public List<Loan> viewLoan(int loanId) throws BankException {
+				List<Loan> loan1=loanDao.getLoan(loanId);
 				
 				if(loan1!=null)
 				{
-					return loanDao.viewLoan(loanId);
+					return loanDao.getLoan(loanId);
 				}
 				else
 					throw new BankException("loan Number does not exist");
 				
 			}
 			
-			public String addLoan(Loan loan) {
+			public List<Loan> addLoan(Loan loan) {
 				
 				return loanDao.addLoan(loan);
 			}
 			
-			public String deleteLoan(int loanId) {
+			public List<Loan> deleteLoan(int loanId) {
 				return loanDao.deleteLoan(loanId);
 			}
 			
-			public String modifyLoan(Loan loan) throws BankException {
+			public List<Loan> modifyLoan(Loan loan) throws BankException {
 				
 				int loanId=loan.getLoanId();
 				
-				Loan loan1=viewLoan(loanId);
+				List<Loan> loan1=viewLoan(loanId);
 				
 				if(loan1!=null)
 				{

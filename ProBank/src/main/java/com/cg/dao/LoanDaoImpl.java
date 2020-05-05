@@ -2,7 +2,6 @@ package com.cg.dao;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,11 +21,11 @@ public class LoanDaoImpl {
 	EntityManager em;
 	
 	//adding new loan
-	public String addLoan(Loan loan)
+	public List<Loan> addLoan(Loan loan)
 	{
 		System.out.println(loan.toString());
 		em.persist(loan);
-		return "loan added successfully";
+		return viewLoan();
 	}
 	
 	//view all loans
@@ -38,33 +37,27 @@ public class LoanDaoImpl {
 	}
 
 	//view specific loan
-	public Loan viewLoan(int loanId)
+	public List<Loan> getLoan(int loanId)
 	{
 		Query query=em.createQuery("select l from Loan l where l.loanId=:id");
 		query.setParameter("id", loanId);
 		@SuppressWarnings("unchecked")
 		List<Loan> list=query.getResultList();
-		Loan loan = null;
-        Optional<Loan> opt = list.stream()
-                                .filter( c -> c.getLoanId()==(loanId))
-                                .findFirst();
-        if(opt.isPresent()) {
-            loan= opt.get();
-        }
-		return loan;
+		
+		return list;
 	}
 	
 	//removing unwanted loan
-	public String deleteLoan(int accountId) {
-		em.remove(viewLoan(accountId));
-		return "loan deleted successfully";
+	public List<Loan> deleteLoan(int accountId) {
+		em.remove(getLoan(accountId).get(0));
+		return viewLoan();
 	}
 	
 	
 	//modify loan details
-	public String modifyLoan(Loan loan) {
+	public List<Loan> modifyLoan(Loan loan) {
 		em.merge(loan);
-		return "loan updated successfully";
+		return viewLoan();
 	}
 
 }
