@@ -7,62 +7,57 @@ import org.springframework.stereotype.Service;
 
 import com.cg.dao.LoanDaoImpl;
 import com.cg.entity.Loan;
-import com.cg.exception.LMSException;
+import com.cg.exception.BankException;
 
 @Service
 
 public class LoanServiceImpl {
 	
-	@Autowired
-	
+@Autowired
 private LoanDaoImpl loanDao;
-	
-	
-			public List<Loan> viewLoan(){
-				return loanDao.viewLoan();
-			}
+
 			
-			public Loan viewLoan(int accountId) throws LMSException {
-				
-			/*	
-				
-				Loan loan1=viewLoan(accountId);
+
+
+
+			public List<Loan> viewLoan(int loanId) throws BankException {
+				List<Loan> loan1=loanDao.getLoan(loanId);
 				
 				if(loan1!=null)
 				{
-					return loanDao.viewLoan(accountId);
+					return loanDao.getLoan(loanId);
 				}
 				else
-					throw new LMSException("loan Number does not exist");
+					throw new BankException("loan Number does not exist");
 				
-				
-				*/
-				return loanDao.viewLoan(accountId);
 			}
 			
-			public String addLoan(Loan loan) {
+			public List<Loan> addLoan(Loan loan) {
+				
 				return loanDao.addLoan(loan);
 			}
 			
-			public String deleteLoan(int accountId) {
-				return loanDao.deleteLoan(accountId);
+			public List<Loan> deleteLoan(int loanId) {
+				return loanDao.deleteLoan(loanId);
 			}
 			
-			public String modifyLoan(Loan loan) throws LMSException {
-				///////
-				int accountId=loan.getAccountId();
+			public List<Loan> modifyLoan(Loan loan) throws BankException {
 				
-				Loan loan1=viewLoan(accountId);
+				int loanId=loan.getLoanId();
+				
+				List<Loan> loan1=viewLoan(loanId);
 				
 				if(loan1!=null)
 				{
 					return loanDao.modifyLoan(loan);
 				}
 				else
-					throw new LMSException("loan Number does not exist");
+					throw new BankException("loan Number does not exist");
+			}
+
+			public List<Loan> viewLoan() {
 				
-				//////////
-				//return loanDao.modifyLoan(loan);
+				return loanDao.viewLoan();
 			}
 			
 
